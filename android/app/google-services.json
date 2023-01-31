@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1001527930785",
+    "project_id": "whistlist-d32f8",
+    "storage_bucket": "whistlist-d32f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001527930785:android:fb86202b4b8b04c22a25e0",
+        "android_client_info": {
+          "package_name": "com.maj.whistlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001527930785-ucunopfcv2et1q1c029to0g81ppkni6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0tl8S9FAy-8Znf4G2qWR-VAgO4GVKoTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001527930785-ucunopfcv2et1q1c029to0g81ppkni6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
