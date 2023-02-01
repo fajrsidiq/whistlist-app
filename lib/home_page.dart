@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whistlist/about_page.dart';
 import 'package:whistlist/form_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +15,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        toolbarHeight: 30,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () =>
+                  _openAboutPage(context = context, fullscreenDialog: true),
+              icon: Icon(Icons.info_outline))
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -98,7 +112,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(top: 0, left: 16, right: 16),
               child: Column(
                 children: [
                   Container(
@@ -138,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 100),
+                    padding: const EdgeInsets.only(top: 65),
                     child: Text(
                       "Ini Data Kamu",
                       style: TextStyle(
@@ -223,4 +237,12 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+void _openAboutPage(BuildContext context, {bool, fullscreenDialog}) {
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+          fullscreenDialog: fullscreenDialog,
+          builder: (context) => AboutPage()));
 }
