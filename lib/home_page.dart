@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                                     itemBuilder: (context, index) {
                                       DocumentSnapshot documentSnapshot =
                                           snapshot.data!.docs[index];
-                                      print("${documentSnapshot["harga"]}");
+                                      print("${documentSnapshot["barang"]}");
                                       return InkWell(
                                         child: Card(
                                           color: Colors.transparent,
@@ -214,8 +214,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (context) {
                                             return FormPage(
                                               judul: "Ubah Data",
-                                              barang:
-                                                  documentSnapshot["barang"],
+                                              barang: documentSnapshot["barang"],
                                               harga: documentSnapshot["harga"],
                                             );
                                           }));
