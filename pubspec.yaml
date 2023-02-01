@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_bottom_navigation_bar: ^1.1.0+1
   cloud_firestore: ^4.3.1
   cupertino_icons: ^1.0.2
   flutter:
@@ -42,6 +43,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.11.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/img/logo.png"
+  min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -55,6 +63,7 @@ flutter:
   assets:
     - assets/img/top_header.png
     - assets/img/logo.png
+    - assets/img/header2.png
 
   # fonts:
   #   - family: Montserrat Reguler

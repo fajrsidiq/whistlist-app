@@ -20,6 +20,72 @@ class _HomePageState extends State<HomePage> {
           }));
         },
         child: Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 1, 186, 240),
+        foregroundColor: Colors.white,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 5,
+        shape: CircularNotchedRectangle(),
+        color: Color.fromARGB(255, 1, 186, 240),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Color.fromARGB(255, 1, 186, 240),
+                    size: 45,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Color.fromARGB(255, 1, 186, 240),
+                    size: 45,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Color.fromARGB(255, 1, 186, 240),
+                    size: 45,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: Color.fromARGB(255, 1, 186, 240),
+                    size: 45,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -72,67 +138,81 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 100),
-                    child: Container(
-                      child: StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance
-                              .collection('whistlist')
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: snapshot.data!.docs.length,
-                                  itemBuilder: (context, index) {
-                                    DocumentSnapshot documentSnapshot =
-                                        snapshot.data!.docs[index];
-                                    print("${documentSnapshot["harga"]}");
-                                    return InkWell(
-                                      child: Card(
-                                        color: Colors.transparent,
-                                        elevation: 40,
-                                        child: Container(
-                                          margin: EdgeInsets.only(bottom: 10),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue[300],
-                                              borderRadius:
-                                                  BorderRadius.circular(35)),
-                                          child: ListTile(
-                                            leading: Icon(
-                                              Icons.catching_pokemon,
-                                              size: 60,
-                                            ),
-                                            trailing: Icon(Icons.edit),
-                                            iconColor: Colors.white,
-                                            textColor: Colors.white,
-                                            shape: RoundedRectangleBorder(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: Text(
+                      "Ini Data Kamu",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 25),
+                    child: SingleChildScrollView(
+                      child: Container(
+                        child: StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('whistlist')
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: snapshot.data!.docs.length,
+                                    itemBuilder: (context, index) {
+                                      DocumentSnapshot documentSnapshot =
+                                          snapshot.data!.docs[index];
+                                      print("${documentSnapshot["harga"]}");
+                                      return InkWell(
+                                        child: Card(
+                                          color: Colors.transparent,
+                                          elevation: 40,
+                                          child: Container(
+                                            margin: EdgeInsets.only(bottom: 10),
+                                            decoration: BoxDecoration(
+                                                color: Colors.blue[300],
                                                 borderRadius:
-                                                    BorderRadius.circular(20)),
-                                            title:
-                                                Text(documentSnapshot["harga"]),
-                                            subtitle: Text(
-                                                documentSnapshot["barang"]),
+                                                    BorderRadius.circular(35)),
+                                            child: ListTile(
+                                              leading: Icon(
+                                                Icons.catching_pokemon,
+                                                size: 60,
+                                              ),
+                                              trailing: Icon(Icons.edit),
+                                              iconColor: Colors.white,
+                                              textColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              title: Text(
+                                                  documentSnapshot["harga"]),
+                                              subtitle: Text(
+                                                  documentSnapshot["barang"]),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.push(context,
-                                            MaterialPageRoute(
-                                                builder: (context) {
-                                          return FormPage(
-                                            judul: "Ubah Data",
-                                            barang: documentSnapshot["barang"],
-                                            harga: documentSnapshot["harga"],
-                                          );
-                                        }));
-                                      },
-                                    );
-                                  });
-                            } else {
-                              return Text("Tidak ada data");
-                            }
-                          }),
+                                        onTap: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                                  builder: (context) {
+                                            return FormPage(
+                                              judul: "Ubah Data",
+                                              barang:
+                                                  documentSnapshot["barang"],
+                                              harga: documentSnapshot["harga"],
+                                            );
+                                          }));
+                                        },
+                                      );
+                                    });
+                              } else {
+                                return Text("Tidak ada data");
+                              }
+                            }),
+                      ),
                     ),
                   )
                 ],
